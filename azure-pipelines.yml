@@ -14,8 +14,18 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud SC'
+    organization: 'niranjanmarch'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'niranjanmarch_niruninja'
+    cliProjectName: 'niruninja'
+    cliSources: '.'
 
 - script: |
     npm install
     npm run build
   displayName: 'npm install and build'
+- task: SonarCloudAnalyze@1

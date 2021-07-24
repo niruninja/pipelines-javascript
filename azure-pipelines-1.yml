@@ -19,3 +19,10 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+# this is being defined in app-ci pipeline
+resources:
+  pipelines:
+  - pipeline: niruninja.pipelines-javascript (1)   # Name of the pipeline resource
+    source: niruninja.pipelines-javascript # Name of the pipeline referenced by the pipeline resource
+    trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
